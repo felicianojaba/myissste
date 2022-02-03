@@ -10,8 +10,31 @@ $(document).ready(function (){
 	$('#paciente-result').hide();
 	//Capture el evento del elemto o input con id=search 
 	
-
 	obtenerTareas()
+	function obtenerTareas(){
+		$.ajax({
+			url: "tarea/mostrart",
+			type: "GET",
+			success: function (response) {
+				//console.log(response);
+				let pacientes = JSON.parse(response);
+				let template ='';
+				pacientes.forEach(paciente =>{
+					template += `<tr pacienteid="${paciente.idpaciente}">
+					<td>${paciente.idpaciente}</td>
+					<td>
+						<a href="#" class="paciente-expediente">${paciente.expediente.substring(0,10)}</a>
+					</td>
+					<td>${paciente.expediente.substring(10,12)}</td>
+					<td>${paciente.nombre}</td>
+					
+					
+					</tr>`});
+				$('#pacientes').html(template);
+				}
+		});
+
+	}	
 	$('#search').keyup(function(e){
 		
 		if($('#search').val()){
@@ -20,14 +43,6 @@ $(document).ready(function (){
 				url : "tarea/responder",
 				type : "POST",
 				data : {search},
-				/*success: function (response){
-						let tasks = JSON.parse(response);
-						let template ='';
-						tasks.forEach(task =>{
-							template += `<li>${task.nombre}</li>`});
-						$('#container').html(template);
-						$('#task-result').show();
-				}*/		
 				success: function (response) {
 				let pacientes = JSON.parse(response);
 				let template ='';
@@ -39,9 +54,6 @@ $(document).ready(function (){
 					</td>
 					<td>${paciente.eltipo}</td>
 					<td>${paciente.nombre}</td>
-					<td>${paciente.nacio}</td>
-					<td>${paciente.telefono}</td>
-					<td>${paciente.depende}</td>
 					<td>
 						<button class="task-delete btn btn-success">
 						Editars
@@ -80,31 +92,7 @@ $(document).ready(function (){
 		edit = false;
 	});
 
-	function obtenerTareas(){
-		$.ajax({
-			url: "tarea/mostrart",
-			type: "GET",
-			success: function (response) {
-				let pacientes = JSON.parse(response);
-				let template ='';
-				pacientes.forEach(paciente =>{
-					template += `<tr pacienteid="${paciente.idpaciente}">
-					<td>${paciente.idpaciente}</td>
-					<td>
-						<a href="#" class="paciente-expediente">${paciente.expediente.substring(0,10)}</a>
-					</td>
-					<td>${paciente.expediente.substring(10,12)}</td>
-					<td>${paciente.nombre}</td>
-					<td>${paciente.nacio}</td>
-					<td>${paciente.telefono}</td>
-					<td>${paciente.depende}</td>
-					
-					</tr>`});
-				$('#pacientes').html(template);
-				}
-		});
 
-	}	
 	
 	$(document).on('click','.task-delete', function () {
 		if(confirm('Desea anotar a este paciente. . ?')){
@@ -137,6 +125,5 @@ $(document).ready(function (){
 		edit = true;	
 		});
 	});	
-
 
 });		

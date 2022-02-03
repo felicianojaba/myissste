@@ -1,4 +1,3 @@
-1. Creamos el formulario en html.
 <!DOCTYPE html>
 <html>
  <head>
@@ -24,7 +23,6 @@
         </div>
  </body>
 </html>
-
 2. La magia de jQuery
 Llega el momento de añadir el jQuery. ¿Dónde? Pues unos os dirán que en el <head>, otros os dirán que en el <body>. La respuesta correcta es que nos vale en ambos sitios, el código JavaScript se puede insertar tanto en el <head> como en el <body>, aunque muchos recomiendan tenerlo en el <head> para tenerlo localizado. Yo, por ejemplo, siempre suelo escribirlo al final del código, justo antes de cerrar el </body>. Como nos da exactamente igual, yo pondré solo el código JavaScript, y ya cada uno que lo copie donde quiera (dentro de las etiquetas <script type=»text/javascript»></script>). Esta vez lo haré por partes.
 

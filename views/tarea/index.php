@@ -10,7 +10,7 @@
 <div class="container p-4">
     <div class="row">
       
-      <div class="col-5">
+      <div class="col-8">
           <div class="card">
             <div class="card-body">
               <form id="paciente-form">
@@ -98,7 +98,7 @@
                   <div class="row">
                      <div class="d-grid gap-2 col-6 mx-auto">
                           <BR>
-                          <button class="btn btn-primary" type="submit">Guarda Paciente</button>
+                          <button class="btn btn-primary" type="submit">Guarda Daos Paciente</button>
                      </div>
                    </div>
 
@@ -109,29 +109,23 @@
           </div>
       </div>
       
-      <div class="col-7">
-          <div class="card card my-4" id="paciente-result">
-              <div class="card-body">
-                  <ul id="container"></ul>
-              </div>   
-          </div>   
-          <table class="table table-striped table-sm">
-            <thead>
+      <div class="col-4">
+        <div class="card">
+          <div class="card-body">
+            <table class="table table-striped table-sm">
+              <thead>
                 <tr>
                   <td>id</td>
                   <td>Expediente</td>
                   <td>Tipo</td>
                   <td>Nombre</td>
-                  <td>Fnacio</td>
-                  <td>Telefono</td>
-                  <td>Modo</td>
                   <td></td>
                 </tr>
-            </thead>
-            <tbody id="pacientes">
-                
-            </tbody>
-          </table>
+              </thead>
+              <tbody id="pacientes"></tbody>
+            </table>
+          </div>
+        </div>    
       </div>
 
 

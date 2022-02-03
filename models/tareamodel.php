@@ -9,6 +9,100 @@ class TareaModel extends Model{
         parent::__construct();
         
     }
+    
+
+    public function lahoja()
+    {
+        $dia = date("Y-m-d");
+        $lahora = date('H');
+        $losminut = date('i');
+
+        
+        if ($lahora>=12) 
+        {
+            if ($lahora==12 AND $losminut<=45) 
+            {
+                $hora_min = $dia . ' 00:00:00';
+                $hora_max = $dia . ' 12:45:59' ;    
+                //echo "es".$losminut;
+            }else
+            {
+                $hora_min = $dia . ' 12:46:00';
+                $hora_max = $dia . ' 23:59:59' ;
+                //echo "en la tarde".$lahora;
+            }
+
+        }    
+        else
+        {
+            
+            $hora_min = $dia . ' 00:00:00';
+            $hora_max = $dia . ' 12:44:59' ;    
+            
+        }   
+        //$hora_min = $dia . ' 00:00:00';
+        //    $hora_max = $dia . ' 23:59:59' ; 
+        $items = [];
+        $sulugar=0;
+        try{
+            $query = $this->db->connect()->query("SELECT * FROM consultas WHERE (fdosconsulta BETWEEN '$hora_min' AND '$hora_max') ORDER BY `consultas`.`id` DESC");
+            $json = array();
+            while($row = $query->fetch()){
+                $sulugar=$sulugar+1;
+                $json[] = array(
+                'id' => $row['id'],
+                'idpaciente' => $row['idpaciente'],
+                'expediente'  => $row['expediente'],
+                'nombre'  => $row['nombre'],
+                'nacio'  => $row['nacio'],
+                'telefono'  => $row['telefono'],
+                'colonia'  => $row['colonia'],
+                'depende'  => $row['depende'],
+                'sulugar'  => $sulugar
+
+                );                
+            }
+            //echo "soy la ficha azul".$lahora;
+            $jsonstring = json_encode($json);
+            echo $jsonstring;
+        }catch(PDOException $e){
+            echo "soy la ficha roja";
+            //return "hay errores";
+        }   
+    }
+
+
+    public function tareasget($letras){
+        try{
+                $query = $this->db->connect()->query("SELECT * FROM pacientes WHERE nombre LIKE '%$letras%'");
+                $json = array();
+                while($row = $query->fetch()){
+                    $json[] = array(
+                    'id' => $row['id'],
+                    'expediente'  => $row['expediente'],
+                    'eltipo'  => $row['eltipo'],
+                    'nacio'  => $row['nacio'],
+                    'sexo'  => $row['sexo'],
+                    'telefono'  => $row['telefono'],
+                    'colonia'  => $row['colonia'],
+                    'depende'  => $row['depende'],
+                    'nombre'  => $row['nombre']
+                    );                
+                }
+                //vardump($json);
+                $jsonstring = json_encode($json);
+                echo $jsonstring;
+                
+                }catch(PDOException $e){
+                    echo $json;
+                    //return [];
+            }
+
+    }
+
+
+
+
 
     public function tareaUpdate($item){
         $query = $this->db->connect()->prepare('UPDATE pacientes SET expediente = :expediente, eltipo = :eltipo, nombre = :nombre , nacio = :nacio , sexo = :sexo , telefono = :telefono , colonia = :colonia , depende = :depende WHERE id = :id');
@@ -121,31 +215,7 @@ class TareaModel extends Model{
 
 
 
-    public function tareasget($letras){
-        try{
-                $query = $this->db->connect()->query("SELECT * FROM pacientes WHERE nombre LIKE '%$letras%'");
-                $json = array();
-                while($row = $query->fetch()){
-                    $json[] = array(
-                    'id' => $row['id'],
-                    'expediente'  => $row['expediente'],
-                    'eltipo'  => $row['eltipo'],
-                    'nacio'  => $row['nacio'],
-                    'sexo'  => $row['sexo'],
-                    'telefono'  => $row['telefono'],
-                    'colonia'  => $row['colonia'],
-                    'depende'  => $row['depende'],
-                    'nombre'  => $row['nombre']
-                    );                
-                }
-                $jsonstring = json_encode($json);
-                echo $jsonstring;
-                
-                }catch(PDOException $e){
-                return [];
-            }
-
-    }
+    
   
 
     public function tareashow(){
@@ -172,63 +242,7 @@ class TareaModel extends Model{
         }   
     }
 
-    public function lahoja()
-    {
-        $dia = date("Y-m-d");
-        $lahora = date('H');
-        $losminut = date('i');
-
-        
-        if ($lahora>=12) 
-        {
-            if ($lahora==12 AND $losminut<=45) 
-            {
-                $hora_min = $dia . ' 00:00:00';
-                $hora_max = $dia . ' 12:45:59' ;    
-                //echo "es".$losminut;
-            }else
-            {
-                $hora_min = $dia . ' 12:46:00';
-                $hora_max = $dia . ' 23:59:59' ;
-                //echo "en la tarde".$lahora;
-            }
-
-        }    
-        else
-        {
-            
-            $hora_min = $dia . ' 00:00:00';
-            $hora_max = $dia . ' 12:44:59' ;    
-            
-        }   
-        //$hora_min = $dia . ' 00:00:00';
-        //    $hora_max = $dia . ' 23:59:59' ; 
-        $items = [];
-        $sulugar=0;
-        try{
-            $query = $this->db->connect()->query("SELECT * FROM consultas WHERE (fdosconsulta BETWEEN '$hora_min' AND '$hora_max') ORDER BY `consultas`.`id` DESC");
-            $json = array();
-            while($row = $query->fetch()){
-                $sulugar=$sulugar+1;
-                $json[] = array(
-                'id' => $row['id'],
-                'idpaciente' => $row['idpaciente'],
-                'expediente'  => $row['expediente'],
-                'nombre'  => $row['nombre'],
-                'nacio'  => $row['nacio'],
-                'telefono'  => $row['telefono'],
-                'colonia'  => $row['colonia'],
-                'depende'  => $row['depende'],
-                'sulugar'  => $sulugar
-
-                );                
-            }
-            $jsonstring = json_encode($json);
-            echo $jsonstring;
-        }catch(PDOException $e){
-            return "hay errores";
-        }   
-    }
+    
 
 
 

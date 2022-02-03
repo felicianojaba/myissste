@@ -18,6 +18,23 @@ class Tarea extends Controller
 	 function render(){
         $this->view->render('tarea/index');
     }
+    
+    function mostrart(){
+         //$this->model->tareashow();
+         if (isset($_POST['search'])){
+            $loqbusca = strtoupper($_POST['search']);
+            $this->model->tareasget($loqbusca);  
+         }else{
+            $loqbusca = "";
+            //$this->model->tareashow();
+            $this->model->lahoja();
+            
+         }
+ 
+     }
+ 
+
+
 
 
     function PRUEBAgrabar(){
@@ -133,19 +150,7 @@ class Tarea extends Controller
     
 
 
-    function mostrart(){
-       //$this->model->tareashow();
-        if (isset($_POST['search'])){
-            $loqbusca = strtoupper($_POST['search']);
-            $this->model->tareasget($loqbusca);    
-        }else{
-            $loqbusca = "";
-            //$this->model->tareashow();
-            $this->model->lahoja();
-        }
-
-    }
-
+    
 
     function responder(){
         if (isset($_POST['search'])){
