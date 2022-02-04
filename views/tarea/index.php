@@ -1,35 +1,26 @@
 <?php require 'views/header.php'; ?>
-
-<! ––Aqui algo -->
-<div class="alert alert-success d-flex align-items-center" role="alert">
-  <svg class="bi flex-shrink-0 me-2" width="12" height="12" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>
-  <div>
-    <h5 class="center"><?php echo $this->mensaje; ?></h5>
-  </div>
-</div>
-
-
-<! ––Aqui toda la pantalla
+    
+<!-- Aqui toda la pantalla -->
 <div class="container m-1">
   <div class="row">
-    <! ––Aqui Datos del Paciente
-    <div class="col-10">
+    <!-- Aqui Datos del Paciente -->
+    <div class="col-11">
       <div class="card">
         <div class="card-body">
           
         <form id="paciente-form">
             <input type="hidden" id="pacienteId">
             
-            <! ––El pirmer renglon del formulario
+            <!--El pirmer renglon del formulario -->
             <div class="row">
               
-              <! ––Expediente
+              <!-- Expediente -->
               <div class="col-2">
                 <label for="expediente" class="form-label">Expediente</label>
                 <input type="text"  class="text-uppercase form-control fs-15" id="expediente" maxlength="10">
               </div>  
               
-              <! ––Tipo
+              <!-- Tipo de -->
               <div class="col-2">
                 <label for="tipo" class="form-label">Tipo</label>
                 <select id="eltipo" class="form-select" aria-label="Default select example">
@@ -60,13 +51,13 @@
                 </select>
               </div>
               
-              <! ––Descripe
+              <!-- Descripe -->
               <div class="col-6">
                 <label for="descripe" class="form-label">Apellido Paterno Materno Nombrea</label>
                 <input type="text" class="form-control" id="nombre" maxlength="40">
               </div>
               
-              <! ––Sexo
+              <!-- Sexo -->
               <div class="col-2">
                 <label for="sexo" class="form-label">Sexo</label>
                 <select id="sexo" class="form-select" aria-label="Default select example">
@@ -74,42 +65,52 @@
                   <option value="MACULINO">MASCULINO</option>
                 </select>
               </div>
-            </div> <! –– Div primer renglon del formulario
+            </div> <!-- Div primer renglon del formulario -->
             
-            <! ––El segundo renglon del formulario
+            <!-- El segundo renglon del formulario -->
             <div class="row">
-              <! ––Nacio  
+              <!-- Nacio --> 
               <div class="col-3">
                 <label for="nacio" class="form-label">Nacio</label>
                 <input type="date" class="form-control" id="nacio">
               </div> 
               
-              <! ––Telefon
+              <!-- Telefon -->
               <div class="col-3">
                 <label for="telefono" class="form-label">Telefono</label>
                 <input type="text" class="form-control" id="telefono">
               </div>  
               
-              <! ––Dependencia
+              <!-- Dependencia -->
               <div class="col-6">
                 <label for="depende" class="form-label">Dependencia</label>
                 <input type="text" class="form-control" id="depende">
               </div>
-            </div><! –– Div segundo renglon del formulario
+            </div><!-- Div segundo renglon del formulario -->
             
-            <! ––Aqui el boton de guardar
+            <!-- Aqui el boton de guardar -->
             <div class="row">
-                <div class="d-grid gap-2 col-6 mx-auto">
-                    <BR>
-                    <button class="btn btn-primary" type="submit">Guarda DaTos Paciente</button>
-                </div>
+              <div class="d-grid gap-0 col-6 mx-auto">
+                <BR>
+                <button class="btn btn-primary" type="submit">Guarda DaTos Paciente</button>
+              </div>
             </div>
           </form>
-        </div> <! ––Div del Body
-      </div> <! ––Div del card
-    </div> <! ––Div col-10
-    <! ––Aqui el div de 2 colunas donde va la tabla
-    <div class="col-2">
+        </div> <!--Div del Body -->
+      </div> <!-- Div del card -->
+      <BR><BR>
+      <div class="card"><!--Div del card -->
+        <div class="card-body"><!--Div del Body -->
+        <div class="alert  alert-success" role="alert">Asegurate de que los datos del paciente esten completos antes de ir a la Referencia  </div>
+          <div class="d-grid gap-4 col-6 mx-auto">
+            <button id="btn-referencia" class="btn btn-info" >Datos Referencia</button>
+          </div>
+        </div>
+      </div>  
+    
+    </div> <!--Div col-10 -->
+    <!--Aqui el div de 2 colunas donde va la tabla -->
+    <div class="col-1">
       <table class="table table-success table-striped table table-sm">
         <thead>
           <tr>
@@ -117,14 +118,15 @@
             <td>Expediente</td>
             <td>Tipo</td>
             <td>Nombre</td>
-            <td></td>
+            
           </tr>
         </thead>
         <tbody id="pacientes"></tbody>
       </table>
     </div>
-  </div><! ––Div del Row
-</div><! ––Div del Container
+  </div><!--Div del Row -->
+</div><!--Div del Container -->
+
 <script type="text/javascript" src="<?php echo constant('URL'); ?>public/js/tareas.js"></script>
 
 <?php require 'views/footer.php'; ?>

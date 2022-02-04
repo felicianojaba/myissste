@@ -26,7 +26,7 @@ $(document).ready(function (){
 						<a href="#" class="paciente-expediente">${paciente.expediente.substring(0,10)}</a>
 					</td>
 					<td>${paciente.expediente.substring(10,12)}</td>
-					<td>${paciente.nombre}</td>
+					<td>${paciente.nombre.substring(0,8)}</td>
 					
 					
 					</tr>`});
@@ -124,5 +124,12 @@ $(document).ready(function (){
 		edit = true;	
 		});
 	});
+
+	$(document).on('click','#btn-referencia', function () {
+		if(confirm('Desea hacer la referencia. . ?')){
+			console.log('dijo si');
+			};
+	});
+
 
 });		
