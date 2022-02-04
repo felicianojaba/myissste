@@ -10,7 +10,7 @@ $(document).ready(function (){
 	$('#paciente-result').hide();
 	//Capture el evento del elemto o input con id=search 
 	
-	obtenerTareas()
+	obtenerTareas();
 	function obtenerTareas(){
 		$.ajax({
 			url: "tarea/mostrart",
@@ -65,7 +65,6 @@ $(document).ready(function (){
 		}	
 
 	});
-
 	$('#paciente-form').submit(function(e){
 		const postData = {
 			expediente : $('#expediente').val(),
@@ -86,7 +85,7 @@ $(document).ready(function (){
 		
 		obtenerTareas();
 		$('#paciente-form').trigger('reset');
-		console.log(response);
+			console.log(response);
 		});
 		e.preventDefault();
 		edit = false;
@@ -124,6 +123,6 @@ $(document).ready(function (){
 		$('#pacienteId').val(paciente.id);
 		edit = true;	
 		});
-	});	
+	});
 
 });		

@@ -62,7 +62,7 @@ class TareaModel extends Model{
 
                 );                
             }
-            //echo "soy la ficha azul".$lahora;
+            //echo $sulugar."soy la ficha azul".$lahora;
             $jsonstring = json_encode($json);
             echo $jsonstring;
         }catch(PDOException $e){
