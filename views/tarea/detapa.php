@@ -15,7 +15,27 @@
 <link href="form-validation.css" rel="stylesheet">
 </head>
 <body class="bg-light">
-    
+    <?php
+      $fechaActual = date('d-m-Y');
+      $mDate=new DateTime();
+      $hoy=$mDate->format("H:i:s");
+      function calculaedad($fechanacimiento){
+        list($ano,$mes,$dia) = explode("-",$fechanacimiento);
+        $ano_diferencia  = date("Y") - $ano;
+        $mes_diferencia = date("m") - $mes;
+        $dia_diferencia   = date("d") - $dia;
+        if ($dia_diferencia < 0 || $mes_diferencia < 0){
+          $ano_diferencia--;
+        }
+        return $ano_diferencia;
+      }
+      $cuentapacientes=0;
+      include_once 'models/refepaciente.php';
+      $cuentapacientes=0;
+      foreach($this->refepacientes as $row) {
+        $cuentapacientes=$cuentapacientes+1;
+      };
+    ?>   
 <div class="container">
   <main>
     <div class="py-5 text-center">
@@ -47,7 +67,26 @@
                         </tr>
                     </thead>
                     <tbody id="tbody-alumnos">
-                   
+                    <?php
+                        include_once 'models/refepaciente.php';
+                        $cuentapacientes=0;
+                        foreach($this->refepacientes as $row) {
+                            $Refepaciente = new Refepaciente();
+                            $Refepaciente = $row;
+                            $expediente = $Refepaciente->expediente;
+                            $motivo = $Refepaciente->motivo;
+                            $cuentapacientes=$cuentapacientes+1;
+                    ?>
+                            <tr id="fila-<?php echo $Refepaciente->id; ?>">
+                            
+                              <td><?php echo $Refepaciente->id; ?></td>
+                              <td><?php echo $Refepaciente->lafecha; ?></td>
+                              <td><?php echo $Refepaciente->motivo; ?></td>
+                              <td><?php echo $Refepaciente->servicio1; ?></td>
+                              <td><a href="<?php echo constant('URL') . 'referencia/ClonaRef/' . $Refepaciente->id.'/'. $expediente; ?>">Clonar</a></td>
+                            </tr>
+                            <?php 
+                        }; ?>
                     </tbody>
                 </table>
                 </div>
