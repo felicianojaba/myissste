@@ -4,7 +4,7 @@ class Controller{
 
     function __construct(){
         $this->view = new View();
-        //echo "<p>Controlador principal</p>";
+		$this->pdf = new FPDF();
     }
 
     function loadModel($model){

@@ -30,7 +30,7 @@
       <div class="collapse navbar-collapse" id="navbarColor01">
           <ul class="navbar-nav me-auto">
             <li class="nav-item">
-              <a class="nav-link active" href="<?php echo constant('URL'); ?>tarea">Consultas
+              <a class="nav-link active" href="<?php echo constant('URL'); ?>consultaArti">Pendientes
                 <span class="visually-hidden">(current)</span>
               </a>
             </li>
@@ -38,11 +38,13 @@
               <a class="nav-link active" aria-current="page" href="<?php echo constant('URL'); ?>referencia">Referencias</a>
             </li>
           </ul>
-          <form class="d-flex">
-            <input class="form-control me-sm-2" type="text" id="search" placeholder="Expediente">
-            <button class="btn btn-success my-2 my-sm-0" id="trabajar" type="submit">Search</button>
+          <form method="post" class="d-flex" action="<?php echo constant('URL'); ?>referencia/muestraPaci" >
+            <input class="form-control me-sm-2" type="text" id="search" placeholder="Expediente" name="sears">
+            <button class="btn btn-success my-2 my-sm-0" id="trabajar" type="submit">Buscar</button>
           </form>
       </div>
     </div>
 </nav>
-
+<script>
+  
+</script>
