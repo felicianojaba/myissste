@@ -30,12 +30,17 @@
       <div class="collapse navbar-collapse" id="navbarColor01">
           <ul class="navbar-nav me-auto">
             <li class="nav-item">
-              <a class="nav-link active" href="<?php echo constant('URL'); ?>consultaArti">Pendientes
+              <a class="nav-link active" href="<?php echo constant('URL'); ?>pendientes">Pendientes
                 <span class="visually-hidden">(current)</span>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="<?php echo constant('URL'); ?>referencia">Referencias</a>
+              <a class="nav-link active" href="<?php echo constant('URL'); ?>referencia">Nueva
+                <span class="visually-hidden">(current)</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="<?php echo constant('URL'); ?>clonada">Clonar</a>
             </li>
           </ul>
           <form method="post" class="d-flex" action="<?php echo constant('URL'); ?>referencia/muestraPaci" >

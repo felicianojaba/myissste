@@ -38,7 +38,7 @@
                     <td><?php echo $paciente->motivo; ?></td>
                     <td><?php echo $paciente->servicio1; ?></td>
                     
-                    <td><a href="<?php echo constant('URL') . 'consultaArti/verArticulo/' . $paciente->id; ?>">Referenciar</a></td>
+                    <td><a href="<?php echo constant('URL') . 'pendientes/verArticulo/' . $paciente->id; ?>">Referenciar</a></td>
                     <td><button class="bEliminar" data-matricula="<?php echo $paciente->id; ?>">Eliminar</button></td> 
                 </tr>
         <?php } ?>

@@ -1,6 +1,6 @@
 <?php
 
-class Referencia extends Controller{
+class Clonada extends Controller{
     function __construct(){
         parent::__construct();
         $this->view->mensaje = "";
@@ -8,7 +8,7 @@ class Referencia extends Controller{
     }
 
     function render(){
-        $this->view->render('referencia/index');
+        $this->view->render('clonada/index');
     }
 
     function muestraPaci($param = null){
@@ -26,7 +26,7 @@ class Referencia extends Controller{
                 //lista paciente coincidentes con sears, se hara nueva referencia
                 $paciente = $this->model->datosp($idPaciente);
                 $this->view->pacientes = $paciente;
-                $this->view->render('referencia/detallepac');    
+                $this->view->render('clonada/detallepac');    
                 
             }else {//el paciente si tiene
                 $this->view->pacientes = $paciente;
@@ -71,7 +71,7 @@ class Referencia extends Controller{
         $idRefe = $param[0];
         $paciente = $this->model->getById($idRefe);
         $this->view->paciente = $paciente;
-        $this->view->render('referencia/index'); 
+        $this->view->render('clonada/index'); 
     }   
     
     //llamada por views/referencia/detallepac para que traiga los datos del paciente  
@@ -79,7 +79,7 @@ class Referencia extends Controller{
         $idRefe = $param[0];
         $paciente = $this->model->getByRfc($idRefe);
         $this->view->paciente = $paciente;
-        $this->view->render('referencia/index'); 
+        $this->view->render('clonada/index'); 
     }    
 
     //la manda llamar views/referencia/index

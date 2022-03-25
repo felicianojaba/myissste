@@ -2,7 +2,7 @@
 
 require 'models/paciente.php';
 
-class ConsultaArtiModel extends Model{
+class PendientesModel extends Model{
 
     public function __construct(){
         parent::__construct();

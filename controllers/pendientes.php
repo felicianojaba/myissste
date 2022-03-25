@@ -1,6 +1,6 @@
 <?php
 
-class ConsultaArti extends Controller{
+class Pendientes extends Controller{
     function __construct(){
         parent::__construct();
         $this->view->mensaje = "";
@@ -10,9 +10,9 @@ class ConsultaArti extends Controller{
         $pacientes = $this->view->datos = $this->model->get();
         $this->view->pacientes = $pacientes;
         //echo var_dump($pacientes);
-        $this->view->render('ConsultaArti/index');
+        $this->view->render('pendientes/index');
     }
-    //llamada por views/consultaArti/index    
+    //llamada por views/pendientes/index    
     function verArticulo($param = null){
         $idReferencia = $param[0];
         $paciente = $this->model->getById($idReferencia);
@@ -21,7 +21,7 @@ class ConsultaArti extends Controller{
         //$_SESSION["id_verReferencia"] = $paciente->id;
 
         $this->view->paciente = $paciente;
-        $this->view->render('ConsultaArti/detalle');
+        $this->view->render('pendientes/detalle');
     }
 
     function actualizarArticulo($param = null){
@@ -98,7 +98,7 @@ class ConsultaArti extends Controller{
         $this->pdf->SetFont('Times','',10);
         $this->pdf->Output();
     
-        $this->view->render('ConsultaArti/detalle');
+        $this->view->render('pendientes/detalle');
     }
 
     function eliminarAlumno($param = null){

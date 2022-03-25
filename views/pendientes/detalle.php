@@ -1,7 +1,7 @@
 <?php 
 require 'views/header.php';
 include_once 'models/paciente.php';
-//llamada por consultaArti/verArticulo
+//llamada por pendientes/verArticulo
 //se selecciona esta referencia de una lista de referencias pendientes
 if (isset($this->paciente)) { //Viene de buscar
   $id=$this->paciente->id;  
@@ -70,7 +70,7 @@ if (isset($this->paciente)) { //Viene de buscar
 
 
 <div class="container">
-    <form action="<?php echo constant('URL'); ?>consultaArti/actualizarArticulo" method="POST">
+    <form action="<?php echo constant('URL'); ?>pendientes/actualizarArticulo" method="POST">
         <div class="row">
             <input type="hidden" name="idpaciente" value="<?php echo $idpaciente;?>">
             <input type="hidden" name="id" value="<?php echo $id;?>">
@@ -157,11 +157,12 @@ if (isset($this->paciente)) { //Viene de buscar
                 <input type="text" class="form-control" name="servicio1" value="<?php echo $refServicio1;?>"required>
             </div>
 
-            <!--Situacion refSituacion-->
+            <!--Situacion $refSituacion-->
             <div class="col-md-2">
                
                 <label for="Situacion" class="form-label">Tipo de Traslado</label>
                 <select class="form-select" name="Situacion" value="<?php echo $refSituacion;?>"required>
+                
                 <option><?php echo $refSituacion;?></option>
                 <option value="Primera Vez">Primera Vez</option>
                 <option value="Subsecuente">Subsecuente</option>

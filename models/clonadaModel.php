@@ -2,7 +2,7 @@
 
 require 'models/paciente.php';
 
-class referenciaModel extends Model{
+class ClonadaModel extends Model{
 
     public function __construct(){
         parent::__construct();

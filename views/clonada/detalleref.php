@@ -1,8 +1,5 @@
-<?php require 'views/header.php';
-//es un listado de pacientes que coinciden con el criterio de busqueda
-//pacientes que no han tenido refercias anteriores
-?>
-<h1 class="center">Bienvenido a Detalle Pacientes</h1>
+<?php require 'views/header.php';?>
+<h1 class="center">Bienvenido a Referencias</h1>
 
 <div class="container-fluid">
         <table class="table table-success table-striped" id="tabla">
@@ -10,9 +7,9 @@
                 <tr>
                     <th>Expediente</th>
                     <th>Nombre</th>
-                    <th>Sexo</th>
-                    <th>Telefono</th>
-                    <th>Fecha Nac</th>
+                    <th>Servicio</th>
+                    <th>Motivo</th>
+                    <th>Fechffa</th>
                     <th>Seleccionar</th>
                 </tr>
             </thead>
@@ -25,15 +22,15 @@
                 $paciente = new Paciente();
                 $paciente = $row;
         ?>
-                <tr id="fila-<?php echo $paciente->idpaciente; ?>">
+                <tr id="fila-<?php echo $paciente->id; ?>">
                     <td><?php echo $paciente->expediente; ?></td>
                     <td><?php echo $paciente->nombre; ?></td>
-                    <td><?php echo $paciente->sexo; ?></td>
-                    <td><?php echo $paciente->telefono; ?></td>
-                    <td><?php echo $paciente->nacio; ?></td>
+                    <td><?php echo $paciente->servicio1; ?></td>
+                    <td><?php echo $paciente->motivo; ?></td>
+                    <td><?php echo $paciente->lafecha; ?></td>
                     
-                    <!--manda el idpaciente a referencia/verpaciente para que triaga sus datos -->
-                    <td><a href="<?php echo constant('URL') . 'referencia/verpaciente/' . $paciente->idpaciente; ?>">Seleccionar</a></td>
+                    
+                    <td><a href="<?php echo constant('URL') . 'referencia/verreferencia/' . $paciente->id; ?>">Seleccionar</a></td>
                     
                 </tr>
         <?php } ?>
